@@ -5,13 +5,13 @@ import Button from "../button/Button";
 import Input from "../input/Input";
 
 function Task({ taskArray, setTask, el }) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [changeState, setChangeState] = useState(false);
   const [newText, setNewText] = useState("");
-  const editText = (el, e) => {
+  const editTask = () => {
     taskArray.filter((elem, i, arr) => {
       if (elem.id === el.id) {
         arr[i] = { ...elem };
-        setIsVisible(true);
+        setChangeState(true);
         setTask(taskArray);
       }
       setNewText(el.title);
@@ -24,18 +24,27 @@ function Task({ taskArray, setTask, el }) {
         arr[i] = { ...elem, title: newText };
       }
 
-      setIsVisible(false);
+      setChangeState(false);
     });
     setTask(newTaskArray);
   };
-  const deleteTask = (el, e) => {
+  const deleteTask = () => {
     taskArray = taskArray.filter((elem, i, arr) => elem.id !== el.id);
     setTask(taskArray);
   };
 
   return (
     <div className="tasksContainer" style={{ width: "100%" }}>
-      {isVisible || (
+      {changeState ? (
+        <div className="newTask" key={el.id}>
+          <Input
+            value={newText}
+            placeholder={"What is the task to day?"}
+            textInp={setNewText}
+          />
+          <Button value={"Add Task"} onClick={updateEdit} />
+        </div>
+      ) : (
         <div className="task" style={{ width: "80%" }}>
           <div style={{ width: "80%" }}>{el.title}</div>
           <div
@@ -45,29 +54,9 @@ function Task({ taskArray, setTask, el }) {
               width: "15%",
             }}
           >
-            <Button
-              value={<AiFillEdit />}
-              onClick={() => {
-                editText(el);
-              }}
-            />
-            <Button
-              value={<AiFillDelete />}
-              onClick={() => {
-                deleteTask(el);
-              }}
-            />
+            <Button value={<AiFillEdit />} onClick={editTask} />
+            <Button value={<AiFillDelete />} onClick={deleteTask} />
           </div>
-        </div>
-      )}
-      {isVisible && (
-        <div className="newTask" key={el.id}>
-          <Input
-            value={newText}
-            placeholder={"What is the task to day?"}
-            textInp={setNewText}
-          />
-          <Button value={"Add Task"} onClick={updateEdit} />
         </div>
       )}
     </div>
