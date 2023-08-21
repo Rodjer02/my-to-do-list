@@ -1,8 +1,18 @@
-
-function Button({ value, Click }) {
-    return (
-        <button onClick={Click} style={{height: '30px', width: '20%', backgroundColor:'blueviolet', outline:'none'}}>{ value }</button>
-    )
+function Button({ value, onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        height: "30px",
+        width: "20%",
+        backgroundColor: "blueviolet",
+        outline: "none",
+        border: "none",
+      }}
+    >
+      {value}
+    </button>
+  );
 }
 
 export default Button;

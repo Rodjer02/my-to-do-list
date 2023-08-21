@@ -1,32 +1,36 @@
-import Button from "./components/button/button";
-import Input from "./components/input/input";
-import NewTask from "./components/tasks/newTask";
+import Button from "./components/button/Button";
+import Input from "./components/input/Input";
+import Tasks from "./components/tasks/Tasks";
 import { useState } from "react";
 import "./style.css";
 
 function App() {
-
-  const [tasks, setTaks] = useState([])
-  const [text, setText] = useState('')
-  function textInp(e) {
-    const newText = '' || e.currentTarget.value
-    setText(newText)
-  }
+  const [tasks, setTaks] = useState([]);
+  const [text, setText] = useState("");
   const addTask = (e) => {
     e.preventDefault();
-    const newTasks = [ ...tasks ]
-    newTasks.push(text)
-    setTaks(newTasks)
-    setText('')
-  }
+    if (text === "") return;
+    const newTasks = [...tasks];
+    newTasks.push({
+      title: text,
+      id: new Date().getTime(),
+      getIsVisible: false,
+    });
+    setTaks(newTasks);
+    setText("");
+  };
   return (
     <div className="taskBox">
-      <h1 style={{marginBottom: '30px'}}>Get Thing Done</h1>
-      <div className="newTask">
-        <Input placeholder={'What is the task to day?'} textInp={ textInp }/>
-        <Button value={'Add Task'} Click={ addTask }/>
+      <h1 style={{ marginBottom: "30px" }}>Get Thing Done</h1>
+      <div className="newTask" style={{ marginBottom: "30px" }}>
+        <Input
+          value={text}
+          placeholder={"What is the task to day?"}
+          textInp={setText}
+        />
+        <Button value={"Add Task"} onClick={addTask} />
       </div>
-      <NewTask taskArray={ tasks }/>
+      <Tasks taskArray={tasks} setTaks={setTaks} />
     </div>
   );
 }
