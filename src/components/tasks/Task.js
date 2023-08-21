@@ -4,7 +4,7 @@ import { useState } from "react";
 import Button from "../button/Button";
 import Input from "../input/Input";
 
-function Task({ taskArray, setTaks, el }) {
+function Task({ taskArray, setTask, el }) {
   const [isVisible, setIsVisible] = useState(false);
   const [newText, setNewText] = useState("");
   const editText = (el, e) => {
@@ -12,24 +12,25 @@ function Task({ taskArray, setTaks, el }) {
       if (elem.id === el.id) {
         arr[i] = { ...elem };
         setIsVisible(true);
+        setTask(taskArray);
       }
-      setTaks(arr);
       setNewText(el.title);
     });
   };
-  const cancelEdit = (el, e) => {
-    taskArray.filter((elem, i, arr) => {
+  const updateEdit = () => {
+    const newTaskArray = [...taskArray];
+    newTaskArray.filter((elem, i, arr) => {
       if (elem.id === el.id) {
         arr[i] = { ...elem, title: newText };
-        setTaks(arr);
-        setNewText(arr.title);
-        setIsVisible(false);
       }
+
+      setIsVisible(false);
     });
+    setTask(newTaskArray);
   };
   const deleteTask = (el, e) => {
     taskArray = taskArray.filter((elem, i, arr) => elem.id !== el.id);
-    setTaks(taskArray);
+    setTask(taskArray);
   };
 
   return (
@@ -66,12 +67,7 @@ function Task({ taskArray, setTaks, el }) {
             placeholder={"What is the task to day?"}
             textInp={setNewText}
           />
-          <Button
-            value={"Add Task"}
-            onClick={() => {
-              cancelEdit(el);
-            }}
-          />
+          <Button value={"Add Task"} onClick={updateEdit} />
         </div>
       )}
     </div>

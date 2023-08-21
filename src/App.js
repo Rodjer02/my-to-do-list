@@ -5,7 +5,16 @@ import { useState } from "react";
 import "./style.css";
 
 function App() {
-  const [tasks, setTaks] = useState([]);
+  const [tasks, setTask] = useState([
+    {
+      title: "assss",
+      id: 12,
+    },
+    {
+      title: "ffff",
+      id: 13,
+    },
+  ]);
   const [text, setText] = useState("");
   const addTask = (e) => {
     e.preventDefault();
@@ -14,9 +23,8 @@ function App() {
     newTasks.push({
       title: text,
       id: new Date().getTime(),
-      getIsVisible: false,
     });
-    setTaks(newTasks);
+    setTask(newTasks);
     setText("");
   };
   return (
@@ -30,7 +38,7 @@ function App() {
         />
         <Button value={"Add Task"} onClick={addTask} />
       </div>
-      <Tasks taskArray={tasks} setTaks={setTaks} />
+      <Tasks taskArray={tasks} setTask={setTask} />
     </div>
   );
 }
