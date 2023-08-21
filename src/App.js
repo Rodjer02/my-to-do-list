@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import Button from "./components/button/button";
+import Input from "./components/input/input";
+import NewTask from "./components/tasks/newTask";
+import { useState } from "react";
+import "./style.css";
 
 function App() {
+
+  const [tasks, setTaks] = useState([])
+  const [text, setText] = useState('')
+  function textInp(e) {
+    const newText = '' || e.currentTarget.value
+    setText(newText)
+  }
+  const addTask = (e) => {
+    e.preventDefault();
+    const newTasks = [ ...tasks ]
+    newTasks.push(text)
+    setTaks(newTasks)
+    setText('')
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="taskBox">
+      <h1 style={{marginBottom: '30px'}}>Get Thing Done</h1>
+      <div className="newTask">
+        <Input placeholder={'What is the task to day?'} textInp={ textInp }/>
+        <Button value={'Add Task'} Click={ addTask }/>
+      </div>
+      <NewTask taskArray={ tasks }/>
     </div>
   );
 }
