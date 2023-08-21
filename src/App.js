@@ -5,16 +5,7 @@ import { useState } from "react";
 import "./style.css";
 
 function App() {
-  const [tasks, setTask] = useState([
-    {
-      title: "assss",
-      id: 12,
-    },
-    {
-      title: "ffff",
-      id: 13,
-    },
-  ]);
+  const [tasks, setTask] = useState([]);
   const [text, setText] = useState("");
   const addTask = (e) => {
     e.preventDefault();
