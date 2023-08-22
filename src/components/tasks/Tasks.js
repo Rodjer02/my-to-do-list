@@ -1,10 +1,10 @@
-import Task from "./Task";
+import Task from "./Task/Task";
 
-function Tasks({ taskArray, setTask }) {
+function Tasks({ tasks, setTask }) {
   return (
     <div style={{ width: "100%" }}>
-      {taskArray.map((el, id, arr) => {
-        return <Task key={el.id} taskArray={arr} setTask={setTask} el={el} />;
+      {tasks.map((el, id, arr) => {
+        return <Task key={el.id} tasks={arr} setTask={setTask} el={el} />;
       })}
     </div>
   );

@@ -1,6 +1,6 @@
-function Input({ placeholder, value, textInp }) {
+function Input({ placeholder, value, setInputValue }) {
   const onChange = (e) => {
-    textInp(e.currentTarget.value);
+    setInputValue(e.currentTarget.value);
   };
   return (
     <input
