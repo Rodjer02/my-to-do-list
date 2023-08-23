@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Form from "../Form/Form";
+import "./k.css";
 
-export default function AddTask({ tasks, setTask }) {
+export default function AddTask({ tasks, setTasks }) {
   const [inputValue, setInputValue] = useState("");
   const addTask = (e) => {
     e.preventDefault();
@@ -11,7 +12,7 @@ export default function AddTask({ tasks, setTask }) {
       title: inputValue,
       id: new Date().getTime(),
     });
-    setTask(newTasks);
+    setTasks(newTasks);
     setInputValue("");
   };
   return (

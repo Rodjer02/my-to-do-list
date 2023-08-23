@@ -1,10 +1,10 @@
 import Tasks from "./components/tasks/Tasks";
 import { useState } from "react";
 import "./style.css";
-import AddTask from "./components/AddTaskForm/AddTask";
+import AddTask from "./components/AddTaskForm/AddTaskForm";
 
 function App() {
-  const [tasks, setTask] = useState([
+  const [tasks, setTasks] = useState([
     {
       title: "agrfg",
       id: 2,
@@ -14,8 +14,8 @@ function App() {
   return (
     <div className="taskBox">
       <h1 style={{ marginBottom: "30px" }}>Get Thing Done</h1>
-      <AddTask tasks={tasks} setTask={setTask} value="Add Task" />
-      <Tasks tasks={tasks} setTask={setTask} />
+      <AddTask tasks={tasks} setTasks={setTasks} value="Add Task" />
+      <Tasks tasks={tasks} setTasks={setTasks} />
     </div>
   );
 }

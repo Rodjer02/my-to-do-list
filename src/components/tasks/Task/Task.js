@@ -2,8 +2,7 @@ import { useState } from "react";
 import TaskGener from "./TaskGener/TaskGener";
 import TaskEdit from "./TaskEdit/TaskEdit";
 
-function Task({ tasks, setTask, el }) {
-  const [inputValue, setInputValue] = useState("");
+function Task({ tasks, setTasks, task }) {
   const [changeState, setChangeState] = useState(false);
 
   return (
@@ -12,18 +11,15 @@ function Task({ tasks, setTask, el }) {
         <TaskEdit
           tasks={tasks}
           setChangeState={setChangeState}
-          setTask={setTask}
-          el={el}
-          inputValue={inputValue}
-          setInputValue={setInputValue}
+          setTasks={setTasks}
+          task={task}
         />
       ) : (
         <TaskGener
           tasks={tasks}
           setChangeState={setChangeState}
-          setTask={setTask}
-          el={el}
-          setInputValue={setInputValue}
+          setTask={setTasks}
+          task={task}
         />
       )}
     </div>

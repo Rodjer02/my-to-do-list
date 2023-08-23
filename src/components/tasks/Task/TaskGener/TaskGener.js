@@ -2,24 +2,17 @@ import { AiFillEdit } from "react-icons/ai";
 import { AiFillDelete } from "react-icons/ai";
 import Button from "../../../button/Button";
 
-function TaskGener({ tasks, el, setTask, setChangeState, setInputValue }) {
+function TaskGener({ tasks, task, setTask, setChangeState }) {
   const editTask = () => {
-    tasks.filter((elem, i, arr) => {
-      if (elem.id === el.id) {
-        arr[i] = { ...elem };
-        setChangeState(true);
-        setTask(tasks);
-      }
-      setInputValue(el.title);
-    });
+    setChangeState(true);
   };
   const deleteTask = () => {
-    tasks = tasks.filter((elem, i, arr) => elem.id !== el.id);
+    tasks = tasks.filter((elem, i, arr) => elem.id !== task.id);
     setTask(tasks);
   };
   return (
     <div className="task" style={{ width: "80%" }}>
-      <div style={{ width: "80%" }}>{el.title}</div>
+      <div style={{ width: "80%" }}>{task.title}</div>
       <div
         style={{
           display: "flex",
