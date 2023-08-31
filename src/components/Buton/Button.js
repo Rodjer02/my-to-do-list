@@ -5,7 +5,6 @@ function Button({ value, onClick }) {
       style={{
         height: "30px",
         width: "20%",
-        backgroundColor: "blueviolet",
         outline: "none",
         border: "none",
       }}

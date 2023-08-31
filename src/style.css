@@ -36,7 +36,7 @@ body {
   margin-bottom: 10px;
   padding: 5px 10px;
   border-radius: 10px;
-  background-color: violet;
+  background-color: blueviolet;
 }
 .tasksContainer {
   display: flex;
