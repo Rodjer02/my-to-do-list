@@ -7,6 +7,7 @@ function Button({ value, onClick }) {
         width: "20%",
         outline: "none",
         border: "none",
+        style: "blueviolet",
       }}
     >
       {value}
