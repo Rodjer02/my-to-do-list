@@ -1,6 +1,6 @@
 import { AiFillEdit } from "react-icons/ai";
 import { AiFillDelete } from "react-icons/ai";
-import Button from "../../../button/Button";
+import Button from "../../../Buton/Button";
 
 function TaskGener({ tasks, task, setTask, setChangeState }) {
   const editTask = () => {

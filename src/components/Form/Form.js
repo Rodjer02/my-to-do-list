@@ -1,5 +1,5 @@
 import Input from "../Input/Input";
-import Button from "../button/Button";
+import Button from "../Buton/Button";
 
 function Form({ placeholder, value, onClick, inputValue, setInputValue }) {
   return (
